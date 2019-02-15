@@ -70,7 +70,6 @@ public class NumeroRacional<E extends Number> implements INumeroRacional{
 		E suma =null;
 		
 		
-		
 		return suma;
 	}
 	
@@ -96,5 +95,21 @@ public class NumeroRacional<E extends Number> implements INumeroRacional{
 		
 		
 		return resultado;
+	}
+
+	public Number getNumerador() {
+		return numerador;
+	}
+	
+	public Number getDenominador() {
+		return denominador;
+	}
+	
+	public void setNumerador(E numerador) {
+		this.numerador=numerador;
+	}
+	
+	public void setDenominador(E denominador) {
+		this.denominador=denominador;
 	}
 }
