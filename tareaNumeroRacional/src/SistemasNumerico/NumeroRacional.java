@@ -1,6 +1,6 @@
 package SistemasNumerico;
 
-public class NumeroRacional<E extends Number> implements INumeroRacional{
+public class NumeroRacional<E extends Number> implements INumeroRacional<NumeroRacional<Number>>{
 
 	private E numerador;
 	private E denominador;
@@ -11,41 +11,48 @@ public class NumeroRacional<E extends Number> implements INumeroRacional{
 	}
 	
 	//implementar-----------------------------------------------------
-	public void verificarInvariantes(E numerador,E denominador) {
-		//???
+	
+	public void verificarInvariantes() {
+		
+		
+		
 	}
 	
 	@Override
-	public void sumarRacional(Object racionalASumar) {
-		// TODO Auto-generated method stub
-		
-		
-	}
-
-	@Override
-	public void restarRacional(Object racionalARestar) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void multiplicarRacional(Object racionalAMultiplicar) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void dividirRacional(Object racionalADividir) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void simplificarRacional() {
+		
+		Integer divisor= (Integer) GCD(this.numerador,this.denominador);
+		
+		Integer valorNumerador=(Integer)numerador;
+		valorNumerador/=divisor;
+		numerador=(E)valorNumerador;
+		
+	}
+
+	@Override
+	public void sumarRacional(NumeroRacional<Number> racionalASumar) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
+	public void restarRacional(NumeroRacional<Number> racionalARestar) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void multiplicarRacional(NumeroRacional<Number> racionalAMultiplicar) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dividirRacional(NumeroRacional<Number> racionalADividir) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	@Override
 	public void inversoRacional() {
 		// TODO Auto-generated method stub
@@ -59,11 +66,11 @@ public class NumeroRacional<E extends Number> implements INumeroRacional{
 	}
 
 	public E GCD(E numerador,E denominador) {
-		E GCD = null;
+		Integer GCD = null;
 		
+		GCD= (Integer) maximoComunDivisor((int)numerador,(int)denominador);
 		
-		
-		return GCD;
+		return (E) GCD;
 	}
 	
 	public E sumar(E primerNumero, E segundoNumero) {
@@ -111,5 +118,17 @@ public class NumeroRacional<E extends Number> implements INumeroRacional{
 	
 	public void setDenominador(E denominador) {
 		this.denominador=denominador;
+	
+  }
+	
+	public int maximoComunDivisor(int a, int b) {
+		if(b==0) {
+			return a;
+		}
+		else {
+			return maximoComunDivisor(b,a%b);
+		}
 	}
+
+	
 }
